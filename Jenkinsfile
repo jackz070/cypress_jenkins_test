@@ -27,9 +27,16 @@ pipeline {
             //   }
         } // This is the missing closing brace
       }
-      stage('Deploy') {
+      stage('Report') {
           steps {
-              echo 'Deploying....'
+              publishHTML([
+                  allowMissing: false,
+                  alwaysLinkToLastBuild: false,
+                  keepAll: true,
+                  reportDir: 'cypress/cypress/reports/html',
+                  reportFiles: 'index.html',
+                  reportName: 'HTML Report', 
+                  reportTitles: ''])
           }
       }
   }

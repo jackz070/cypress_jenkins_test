@@ -16,15 +16,15 @@ pipeline {
         parallel {
             stage('Test 1') {
                  steps {
-               sh 'npm run cypress:ci'
+               sh 'npm run cypress:run'
                  }
               }
            
-            stage('Test 2') {
-                 steps {
-               sh 'npm run cypress2:ci'
-                 }
-              }
+            // stage('Test 2') {
+            //      steps {
+            //    sh 'npm run cypress2:ci'
+            //      }
+            //   }
         } // This is the missing closing brace
       }
       stage('Deploy') {

@@ -1,8 +1,12 @@
 {
-  "scripts":{
+  "scripts": {
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"},
+    "cypress:run": "cypress run"
+  },
   "dependencies": {
     "cypress": "^13.10.0"
+  },
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^3.8.2"
   }
 }

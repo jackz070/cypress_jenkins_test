@@ -27,6 +27,11 @@ pipeline {
             //   }
         } // This is the missing closing brace
       }
+      stage('Verify Directory') {
+        steps {
+          sh 'ls -l /Users/jaceksmoter/.jenkins/workspace/cypress_jenkins_pipeline/cypress/cypress/reports'
+        }
+      }
       stage('Report') {
           steps {
               publishHTML([

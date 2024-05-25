@@ -1,6 +1,6 @@
 describe('template spec', () => {
-  it('passes after 45 sec', () => {
-    cy.wait(45000)
+  it('passes after 4.5 sec', () => {
+    cy.wait(4500)
     expect(true).to.equal(true)
   })
 })

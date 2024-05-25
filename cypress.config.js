@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  video: true,
   reporter: 'mochawesome',
   reporterOptions: {
     reportFilename: 'report-[name]-[datetime]',

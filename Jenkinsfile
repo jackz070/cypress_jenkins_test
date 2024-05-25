@@ -38,6 +38,13 @@ pipeline {
         } // This is the missing closing brace
       }
 
+      stage('Clear reporting directories') {
+          steps {
+              ansiColor('xterm'){sh 'rm -rf cypress/reports/*'}
+              ansiColor('xterm'){sh 'rm -rf mochawesome-report/*'}
+          }
+      }
+
       stage('Merge Reports') {
           steps {
               ansiColor('xterm') {

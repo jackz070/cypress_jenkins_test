@@ -36,6 +36,20 @@ pipeline {
                   }
                  }
               }
+              stage('Test 4 (pass, 45 sec)') {
+                 steps {
+                  catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+                      ansiColor('xterm'){sh 'npm run cypress:run -- --spec cypress/e2e/test_45_seconds.cy.js --reporter mochawesome'}
+                  }
+                 }
+              }
+              stage('Test 3 (pass, 30 sec)') {
+                 steps {
+                  catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+                      ansiColor('xterm'){sh 'npm run cypress:run -- --spec cypress/e2e/test_30_seconds.cy.js --reporter mochawesome'}
+                  }
+                 }
+              }
         }
       }
 

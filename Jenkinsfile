@@ -7,6 +7,13 @@ pipeline {
       CHROME_BIN = '/bin/google-chrome'
   }
   stages {
+      stage('Clear reporting directories') {
+          steps {
+              ansiColor('xterm'){sh 'rm -rf cypress/reports/*'}
+              ansiColor('xterm'){sh 'rm -rf mochawesome-report/*'}
+          }
+      }
+
       stage('Dependencies') {
           steps {
               ansiColor('xterm'){sh 'npm i'}
@@ -36,13 +43,6 @@ pipeline {
             //      }
             //   }
         } // This is the missing closing brace
-      }
-
-      stage('Clear reporting directories') {
-          steps {
-              ansiColor('xterm'){sh 'rm -rf cypress/reports/*'}
-              ansiColor('xterm'){sh 'rm -rf mochawesome-report/*'}
-          }
       }
 
       stage('Merge Reports') {

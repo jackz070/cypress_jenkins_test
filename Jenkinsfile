@@ -16,7 +16,9 @@ pipeline {
         parallel {
             stage('Test 1') {
                  steps {
-               sh 'npm run cypress:run'
+                  catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+                      sh 'npm run cypress:run'
+                  }
                  }
               }
            

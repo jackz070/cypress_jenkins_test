@@ -9,7 +9,7 @@ pipeline {
   stages {
       stage('Dependencies') {
           steps {
-              sh 'npm i'
+              ansiColor('xterm'){sh 'npm i'}
           }
       }
       stage('e2e Tests') {
@@ -17,7 +17,7 @@ pipeline {
             stage('Test 1 (pass)') {
                  steps {
                   catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-                      sh 'npm run cypress:run -- --spec cypress/e2e/test_pass.cy.js'
+                      ansiColor('xterm'){sh 'npm run cypress:run -- --spec cypress/e2e/test_pass.cy.js'}
                   }
                  }
               }
@@ -25,7 +25,7 @@ pipeline {
                stage('Test 2 (fail)') {
                  steps {
                   catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-                      sh 'npm run cypress:run -- --spec cypress/e2e/test_fail.cy.js'
+                      ansiColor('xterm'){sh 'npm run cypress:run -- --spec cypress/e2e/test_fail.cy.js'}
                   }
                  }
               }
@@ -40,8 +40,10 @@ pipeline {
 
       stage('Merge Reports') {
           steps {
-              sh 'npx mochawesome-merge cypress/reports/*.json > cypress/reports/merged-report.json'
-              sh 'npx marge cypress/reports/merged-report.json -f report -o cypress/reports'
+              ansiColor('xterm') {
+                sh 'npx mochawesome-merge cypress/reports/*.json > cypress/reports/merged-report.json'
+                sh 'npx marge cypress/reports/merged-report.json -f report -o cypress/reports'
+                }
           }
       }
 

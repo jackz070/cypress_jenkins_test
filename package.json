@@ -1,7 +1,7 @@
 {
   "scripts": {
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run --reporter mochawesome"
+    "cypress:run": "cypress run --browser chrome --reporter mochawesome"
   },
   "dependencies": {
     "cypress": "^13.10.0"

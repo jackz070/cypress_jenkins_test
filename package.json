@@ -1,12 +1,14 @@
 {
   "scripts": {
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports,mochawesomeFilename=test-result.json"
   },
   "dependencies": {
     "cypress": "^13.10.0"
   },
   "devDependencies": {
-    "cypress-mochawesome-reporter": "^3.8.2"
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0"
   }
 }

@@ -38,6 +38,13 @@ pipeline {
         } // This is the missing closing brace
       }
 
+      stage('Merge Reports') {
+          steps {
+              sh 'npx mochawesome-merge cypress/reports/*.json > cypress/reports/merged-report.json'
+              sh 'npx marge cypress/reports/merged-report.json -f report -o cypress/reports'
+          }
+      }
+
       stage('Report') {
           steps {
               publishHTML([
@@ -45,7 +52,7 @@ pipeline {
                   alwaysLinkToLastBuild: false,
                   keepAll: true,
                   reportDir: 'cypress/reports/html',
-                  reportFiles: 'index.html',
+                  reportFiles: 'report.html',
                   reportName: 'HTML Report', 
                   reportTitles: ''])
           }

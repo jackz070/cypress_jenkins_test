@@ -42,7 +42,7 @@ pipeline {
           steps {
               ansiColor('xterm') {
                 sh 'npx mochawesome-merge cypress/reports/*.json > cypress/reports/merged-report.json'
-                sh 'npx marge cypress/reports/merged-report.json -f report -o cypress/reports'
+                sh 'npx marge cypress/reports/merged-report.json -f report -o cypress/reports/html'
                 }
           }
       }

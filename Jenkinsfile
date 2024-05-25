@@ -36,13 +36,7 @@ pipeline {
                   }
                  }
               }
-           
-            // stage('Test 2') {
-            //      steps {
-            //    sh 'npm run cypress2:ci'
-            //      }
-            //   }
-        } // This is the missing closing brace
+        }
       }
 
       stage('Merge Reports') {

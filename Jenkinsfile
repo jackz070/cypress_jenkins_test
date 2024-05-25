@@ -17,7 +17,7 @@ pipeline {
             stage('Test 1 (pass)') {
                  steps {
                   catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-                      ansiColor('xterm'){sh 'npm run cypress:run -- --spec cypress/e2e/test_pass.cy.js'}
+                      ansiColor('xterm'){sh 'npm run cypress:run -- --spec cypress/e2e/test_pass.cy.js --reporter-options reportDir=cypress/reports,mochawesomeFilename=test-pass.json'}
                   }
                  }
               }
@@ -25,7 +25,7 @@ pipeline {
                stage('Test 2 (fail)') {
                  steps {
                   catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-                      ansiColor('xterm'){sh 'npm run cypress:run -- --spec cypress/e2e/test_fail.cy.js'}
+                      ansiColor('xterm'){sh 'npm run cypress:run -- --spec cypress/e2e/test_fail.cy.js --reporter-options reportDir=cypress/reports,mochawesomeFilename=test-fail.json'}
                   }
                  }
               }

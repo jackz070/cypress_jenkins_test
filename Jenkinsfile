@@ -43,9 +43,14 @@ pipeline {
               ansiColor('xterm') {
                 // sh 'npx mochawesome-merge cypress/reports/*.json > cypress/reports/merged-report.json'
                 // sh 'npx marge cypress/reports/merged-report.json -f report -o cypress/reports/html'
-                sh 'npx mochawesome-merge --reportDir cypress/mochawesome-report cypress/mochawesome-report/*.json'
-                sh 'mv cypress/mochawesome-report/mochawesome.json cypress/mochawesome-report/merged-report.json'
-                sh 'npx marge cypress/mochawesome-report/merged-report.json -f report -o cypress/reports/html'
+                    sh 'npx mochawesome-merge --reportDir mochawesome-report mochawesome-report/*.json'
+                }
+                ansiColor('xterm'){
+                    sh 'mv mochawesome-report/mochawesome.json mochawesome-report/merged-report.json'
+                }
+                ansiColor('xterm'){
+                    sh 'npx marge mochawesome-report/merged-report.json -f report -o cypress/reports/html'
+                }
                 }
           }
       }

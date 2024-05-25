@@ -8,6 +8,9 @@ module.exports = defineConfig({
     // JSONfile: 'reports/my-test-output-[hash].json',
   },
   e2e: {
+    env: {
+      "test": "ooga booga"
+    },
     setupNodeEvents(on, config) {
       // require('cypress-mochawesome-reporter/plugin')(on);
     },

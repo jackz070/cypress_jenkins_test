@@ -1,6 +1,8 @@
 describe('template spec', () => {
   it('passes', () => {
-    cy.wait(10000)
     expect(true).to.equal(true)
+    expect(Cypress.env('test')).to.equal('ooga booga')
+    console.log("HELLO THERE in console.log")
+    cy.log("HELLO THERE in cy.log")
   })
 })

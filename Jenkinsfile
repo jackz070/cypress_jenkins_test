@@ -53,9 +53,6 @@ pipeline {
                     sh 'npx mochawesome-merge --reportDir mochawesome-report mochawesome-report/*.json -o mochawesome-report/merged-report.json'
                 }
                 ansiColor('xterm'){
-                    sh 'mv mochawesome-report/mochawesome.json mochawesome-report/merged-report.json'
-                }
-                ansiColor('xterm'){
                     sh 'npx marge mochawesome-report/merged-report.json -f report -o cypress/reports/html'
                 }
                 }

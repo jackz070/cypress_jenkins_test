@@ -14,10 +14,18 @@ pipeline {
       }
       stage('e2e Tests') {
         parallel {
-            stage('Test 1') {
+            stage('Test 1 (pass)') {
                  steps {
                   catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-                      sh 'npm run cypress:run'
+                      sh 'npm run cypress:run -- --spec cypress/e2e/test_pass.cy.js'
+                  }
+                 }
+              }
+
+               stage('Test 2 (fail)') {
+                 steps {
+                  catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+                      sh 'npm run cypress:run -- --spec cypress/e2e/test_fail.cy.js'
                   }
                  }
               }

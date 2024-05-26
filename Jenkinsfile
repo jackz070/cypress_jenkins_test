@@ -24,7 +24,9 @@ pipeline {
             stage('Test 1 (pass)') {
                  steps {
                   catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-                      ansiColor('xterm'){sh 'npm run cypress:run -- --spec cypress/e2e/test_pass.cy.js --reporter mochawesome --env CYPRESS_message="$message"'}
+                      ansiColor('xterm'){          
+                        sh 'npm run cypress:run:jenkins -- --spec cypress/e2e/test_pass.cy.js --reporter mochawesome --env CYPRESS_message="$message"'
+                        sh 'node rename-videos.js'}
                   }
                  }
               }

@@ -1,7 +1,8 @@
 {
   "scripts": {
     "cypress:open": "cypress open",
-    "cypress:run": "set NO_COLOR=1 && cypress run --browser chrome --reporter mochawesome && node rename-videos.js"
+    "cypress:run": "set NO_COLOR=1 && cypress run --browser chrome --reporter mochawesome && node rename-videos.js",
+    "cypress:run:jenkins": "set NO_COLOR=1 && cypress run --browser chrome --reporter mochawesome"
   },
   "dependencies": {
     "cypress": "^13.10.0"
